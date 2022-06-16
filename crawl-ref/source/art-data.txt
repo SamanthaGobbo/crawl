@@ -1666,19 +1666,12 @@ NAME:    mountain boots
 OBJ:     OBJ_ARMOUR/ARM_BOOTS
 TILE:    urand_spider
 TILE_EQ: spider
-PLUS:    +4
+PLUS:    +3
 COLOUR:  ETC_PAKELLAS
 COLD:    1
 BOOL:    special
 INSCRIP: rDislodge,
-DBRAND:  It prevents the wearer from being involuntarily moved out of their tile
- by external forces. Such forces include being pushed by trampling monsters and
- lances of force, pulled by tentacles and harpoons, blown about by winds, lured
- by the songs of merfolk avatars, or shoved out of the way of sealing doors. It
- will even protect the wearer against falling through unexpected shaft traps,
- though the wearer can still choose to voluntarily fall through a known shaft.
-+It cannot prevent involuntary translocation-based movements, such as blinking,
- teleporting, or banishment.
+DBRAND:  It prevents involuntary movement from physical forces.
 
 # This entry must always be last.
 ENUM:   DUMMY2
