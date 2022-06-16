@@ -1061,13 +1061,9 @@ void move_child_tentacles(monster* mons)
                 && constrictee->is_habitable(old_pos))
             {
                 if (constrictee->res_dislodge())
-                {
                     announce_rdislodge("being pulled by the tentacle");
-                }
                 else
-                {
                     pull_constrictee = true;
-                }
             }
         }
 

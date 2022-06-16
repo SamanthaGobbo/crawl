@@ -3374,9 +3374,7 @@ bool melee_attack::do_knockback(bool trample)
                      defender->conj_verb("are").c_str());
             }
             else if (defender->res_dislodge())
-            {
                 announce_rdislodge("being knocked back");
-            }
             else
             {
                 mprf("%s %s %s ground!",
