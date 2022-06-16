@@ -795,14 +795,11 @@ void move_solo_tentacle(monster* tentacle)
         constrictee = actor_by_mid(tentacle->constricting->begin()->first);
 
         // Don't drag things that cannot move
-        if (!constrictee->is_stationary())
+        if (constrictee->res_dislodge())
+            announce_rdislodge("being pulled by " + tentacle->name(DESC_THE));
+        else if (!constrictee->is_stationary())
         {
-            if (constrictee->res_dislodge())
-            {
-                        string tent = (tentacle->type == MONS_SNAPLASHER_VINE ? "vine" : "tentacle");
-                announce_rdislodge("being pulled by the " + tent);
-            }
-            else if (retract_found)
+            if (retract_found)
             {
                 if (constrictee->is_habitable(old_pos))
                 {

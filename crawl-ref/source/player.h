@@ -782,7 +782,7 @@ public:
     bool no_tele(bool blink = false) const override;
     string no_tele_reason(bool blink = false) const;
     bool antimagic_susceptible() const override;
-        bool res_dislodge() const;
+    bool res_dislodge() const override;
 
     bool res_corr(bool allow_random = true, bool temp = true) const override;
     bool clarity(bool items = true) const override;

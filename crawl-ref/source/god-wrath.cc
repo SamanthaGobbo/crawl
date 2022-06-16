@@ -2032,7 +2032,7 @@ static bool _ignis_shaft()
     // while under Ignis wrath.
     if (you.res_dislodge())
     {
-        announce_rdislodge("falling through the burned ground");
+        announce_rdislodge("falling");
         return true;
     }
 

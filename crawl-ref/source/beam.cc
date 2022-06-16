@@ -4583,9 +4583,10 @@ void bolt::knockback_actor(actor *act, int dam)
     if (!act || !can_knockback(*act, dam))
         return;
 
-    if (act->res_dislodge() && you.can_see(*act))
+    if (act->res_dislodge())
     {
-        announce_rdislodge("being knocked back");
+        if (you.can_see(*act))
+            announce_rdislodge("being knocked back");
         return;
     }
 

@@ -397,7 +397,7 @@ void wind_blast(actor* agent, int pow, coord_def target)
 
         if (ai->res_dislodge())
         {
-        announce_rdislodge("being blown about by the wind");
+            announce_rdislodge("being blown about by the wind");
             continue;
         }
 
