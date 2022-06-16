@@ -795,9 +795,8 @@ void move_solo_tentacle(monster* tentacle)
         constrictee = actor_by_mid(tentacle->constricting->begin()->first);
 
         // Don't drag things that cannot move
-        if (constrictee->res_dislodge())
-            announce_rdislodge("being pulled by " + tentacle->name(DESC_THE));
-        else if (!constrictee->is_stationary())
+        if (!constrictee->is_stationary()
+            && !constrictee->resists_dislodge("being pulled by " + tentacle->name(DESC_THE)))
         {
             if (retract_found)
             {
@@ -1055,12 +1054,10 @@ void move_child_tentacles(monster* mons)
         {
             constrictee = actor_by_mid(tentacle->constricting->begin()->first);
             if (feat_has_solid_floor(env.grid(old_pos))
-                && constrictee->is_habitable(old_pos))
+                && constrictee->is_habitable(old_pos)
+                && !constrictee->resists_dislodge("being pulled by " + tentacle->name(DESC_THE)))
             {
-                if (constrictee->res_dislodge())
-                    announce_rdislodge("being pulled by the tentacle");
-                else
-                    pull_constrictee = true;
+                pull_constrictee = true;
             }
         }
 

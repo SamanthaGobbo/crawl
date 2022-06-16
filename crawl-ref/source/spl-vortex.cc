@@ -382,12 +382,12 @@ void polar_vortex_damage(actor *caster, int dur)
                     }
                 }
 
-                if (victim->alive() && !leda && dur > 0)
+                if (victim->alive()
+                    && !leda
+                    && dur > 0
+                    && !victim->resists_dislodge("being moved by the vortex"))
                 {
-                    if (victim->is_player() && victim->res_dislodge())
-                        announce_rdislodge("being blown about by the vortex");
-                    else
-                        move_dest[victim->mid] = victim->pos();
+                    move_dest[victim->mid] = victim->pos();
                 }
             }
 

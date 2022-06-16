@@ -390,14 +390,9 @@ void wind_blast(actor* agent, int pow, coord_def target)
             || ai->pos().distance_from(agent->pos()) > radius
             || ai->pos() == agent->pos() // so it's never aimed_at_feet
             || !target.origin()
-               && _angle_between(agent->pos(), target, ai->pos()) > PI/4.0)
+               && _angle_between(agent->pos(), target, ai->pos()) > PI/4.0
+            || ai->resists_dislodge("being blown about by the wind"))
         {
-            continue;
-        }
-
-        if (ai->res_dislodge())
-        {
-            announce_rdislodge("being blown about by the wind");
             continue;
         }
 

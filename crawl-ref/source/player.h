@@ -782,7 +782,6 @@ public:
     bool no_tele(bool blink = false) const override;
     string no_tele_reason(bool blink = false) const;
     bool antimagic_susceptible() const override;
-    bool res_dislodge() const override;
 
     bool res_corr(bool allow_random = true, bool temp = true) const override;
     bool clarity(bool items = true) const override;
@@ -822,6 +821,7 @@ public:
     int beam_resists(bolt &beam, int hurted, bool doEffects, string source)
         override;
     bool can_feel_fear(bool include_unknown) const override;
+    bool resists_dislodge(string event = "") const override;
 
     bool can_throw_large_rocks() const override;
     bool can_smell() const;
@@ -1115,8 +1115,6 @@ bool player_regenerates_hp();
 bool player_regenerates_mp();
 
 void print_potion_heal_message();
-
-void announce_rdislodge(string source);
 
 void contaminate_player(int change, bool controlled = false, bool msg = true);
 

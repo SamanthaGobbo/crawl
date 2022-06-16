@@ -6631,12 +6631,21 @@ void player::drain_stat(stat_type s, int amount)
     lose_stat(s, amount);
 }
 
-bool player::res_dislodge() const
+/**
+ * Checks to see whether the player can be dislodged by physical effects.
+ * This only accounts for the "mountain boots" unrand, not being stationary, etc.
+ *
+ * @param event A message to be printed if the player cannot be dislodged.
+ *               If empty, nothing will be printed.
+ * @return Whether the player can be moved.
+ */
+bool player::resists_dislodge(string event) const
 {
-    // This doesn't include is_stationary(), because unlike is_stationary(),
-    // if the player can't move due to rDislodge, a message should still be
-    // displayed.
-    return player_equip_unrand(UNRAND_MOUNTAIN_BOOTS);
+    if (!player_equip_unrand(UNRAND_MOUNTAIN_BOOTS))
+        return false;
+    if (!event.empty())
+        mprf("Your boots keep you from %s.", event.c_str());
+    return true;
 }
 
 bool player::corrode_equipment(const char* corrosion_source, int degree)
@@ -7372,12 +7381,9 @@ bool player::shaftable(bool check_terrain) const
 // different effect from the player invokable ability.
 bool player::do_shaft(bool check_terrain)
 {
-    if (!shaftable(check_terrain))
-        return false;
-
-    if (res_dislodge())
+    if (!shaftable(check_terrain)
+        || resists_dislodge("falling into an unexpected shaft"))
     {
-        announce_rdislodge("falling into an unexpected shaft");
         return false;
     }
 
@@ -7802,16 +7808,6 @@ void print_potion_heal_message()
     else if (_get_potion_heal_factor() < 2)
         mpr("Your system partially rejects the healing.");
 }
-
-
-// Since the only source of rDislodge is the unrand boots, and those can only
-// be worn by the player, this text assumes the player is the actor who is
-// being not dislodged and that the property comes from their boots.
-void announce_rdislodge(string source)
-{
-    mprf("Your boots keep you from %s!", source.c_str());
-}
-
 
 bool player::can_potion_heal()
 {

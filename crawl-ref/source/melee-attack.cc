@@ -3363,7 +3363,7 @@ bool melee_attack::do_knockback(bool trample)
         // Prevent trample/drown combo when flight is expiring
         || defender->is_player() && need_expiration_warning(new_pos)
         || defender->is_constricted()
-        || defender->res_dislodge())
+        || defender->resists_dislodge(needs_message ? "being knocked back" : ""))
     {
         if (needs_message)
         {
@@ -3373,8 +3373,6 @@ bool melee_attack::do_knockback(bool trample)
                      defender_name(false).c_str(),
                      defender->conj_verb("are").c_str());
             }
-            else if (defender->res_dislodge())
-                announce_rdislodge("being knocked back");
             else
             {
                 mprf("%s %s %s ground!",

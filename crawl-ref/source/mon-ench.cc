@@ -1157,17 +1157,11 @@ static bool _merfolk_avatar_movement_effect(const monster* mons)
         || you.duration[DUR_TIME_STEP]
         || you.cannot_act()
         || you.clarity()
-        || you.is_stationary())
+        || you.is_stationary()
+        || you.resists_dislodge("being lured by song"))
     {
         return true;
     }
-
-    if (you.res_dislodge())
-    {
-        announce_rdislodge("being lured forward by the song");
-        return true;
-    }
-
 
     // We use a beam tracer here since it is better at navigating
     // obstructing walls than merely comparing our relative positions

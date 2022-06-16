@@ -210,6 +210,7 @@ public:
     virtual void acid_corrode(int acid_strength) = 0;
     virtual bool corrode_equipment(const char* corrosion_source = "the acid",
                                    int degree = 1) = 0;
+    virtual bool resists_dislodge(string /*event*/ = "") const { return false; };
 
     virtual bool can_hibernate(bool holi_only = false,
                                bool intrinsic_only = false) const;
@@ -286,7 +287,6 @@ public:
     virtual bool no_tele(bool blink = false) const = 0;
     virtual int inaccuracy() const;
     virtual bool antimagic_susceptible() const = 0;
-    virtual bool res_dislodge() const = 0;
 
     virtual bool res_corr(bool /*allow_random*/ = true, bool temp = true) const;
     bool has_notele_item(vector<const item_def *> *matches = nullptr) const;
