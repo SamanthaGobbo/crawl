@@ -815,14 +815,12 @@ void get_cleave_targets(const actor &attacker, const coord_def& def,
     if (attack_cleaves(attacker, which_attack))
     {
         const coord_def atk = attacker.pos();
-        coord_def atk_vector = def - atk;
-        const int dir = random_choose(-1, 1);
-
-        for (int i = 0; i < 7; ++i)
+        const bool lochaber = true; // TODO
+        const int cleave_radius = lochaber ? 2 : 1;
+        for (distance_iterator di(atk, true, true, cleave_radius); di; ++di)
         {
-            atk_vector = rotate_adjacent(atk_vector, dir);
-
-            actor *target = actor_at(atk + atk_vector);
+            if (*di == def) continue; // no double jeopardy
+            actor *target = actor_at(*di);
             if (target && !_dont_harm(attacker, *target))
                 targets.push_back(target);
         }
