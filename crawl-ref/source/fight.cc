@@ -854,10 +854,9 @@ void attack_cleave_targets(actor &attacker, list<actor*> &targets,
                            wu_jian_attack_type wu_jian_attack,
                            bool is_projected)
 {
+    const item_def* weap = attacker.weapon(attack_number);
     if (attacker.is_player())
     {
-        const item_def* weap = attacker.weapon(attack_number);
-
         if ((wu_jian_attack == WU_JIAN_ATTACK_WHIRLWIND
              || wu_jian_attack == WU_JIAN_ATTACK_WALL_JUMP
              || wu_jian_attack == WU_JIAN_ATTACK_TRIGGERED_AUX)
@@ -869,12 +868,15 @@ void attack_cleave_targets(actor &attacker, list<actor*> &targets,
         }
     }
 
+    const bool reaching = weap && weapon_reach(*weap) > REACH_NONE;
     while (attacker.alive() && !targets.empty())
     {
         actor* def = targets.front();
 
         if (def && def->alive() && !_dont_harm(attacker, *def)
-            && (is_projected || adjacent(attacker.pos(), def->pos())))
+            && (is_projected
+                || adjacent(attacker.pos(), def->pos())
+                || reaching))
         {
             melee_attack attck(&attacker, def, attack_number,
                                ++effective_attack_number, true);
