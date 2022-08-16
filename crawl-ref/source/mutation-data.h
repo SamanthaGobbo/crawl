@@ -131,39 +131,27 @@ static const mutation_def mut_data[] =
    "You feel less cold resistant."},
 },
 
-{ MUT_HEAT_VULNERABILITY, 0, 3,
+{ MUT_HEAT_VULNERABILITY, 3, 1,
   mutflag::bad | mutflag::qazlal, true,
   "heat vulnerability",
 
-  {"You are vulnerable to heat. (rF-)",
-   "You are very vulnerable to heat. (rF--)",
-   "You are extremely vulnerable to heat. (rF---)"},
+  {"You are vulnerable to heat. (rF-)", "", ""},
 
-  {"You feel vulnerable to heat.",
-   "You feel vulnerable to heat.",
-   "You feel vulnerable to heat."},
+  {"You feel vulnerable to heat.", "", ""},
 
-  {"You no longer feel vulnerable to heat.",
-   "You feel less vulnerable to heat.",
-   "You feel less vulnerable to heat."},
+  {"You no longer feel vulnerable to heat.", "", ""},
 },
 
-{ MUT_COLD_VULNERABILITY, 0, 3,
+{ MUT_COLD_VULNERABILITY, 3, 1,
   mutflag::bad | mutflag::qazlal, true,
 
   "cold vulnerability",
 
-  {"You are vulnerable to cold. (rC-)",
-   "You are very vulnerable to cold. (rC--)",
-   "You are extremely vulnerable to cold. (rC---)"},
+  {"You are vulnerable to cold. (rC-)", "", ""},
 
-  {"You feel vulnerable to cold.",
-   "You feel vulnerable to cold.",
-   "You feel vulnerable to cold."},
+  {"You feel vulnerable to cold.", "", ""},
 
-  {"You no longer feel vulnerable to cold.",
-   "You feel less vulnerable to cold.",
-   "You feel less vulnerable to cold."},
+  {"You no longer feel vulnerable to cold.", "", ""},
 },
 
 { MUT_DEMONIC_GUARDIAN, 0, 3, mutflag::good, false,

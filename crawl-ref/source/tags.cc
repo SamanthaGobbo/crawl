@@ -3462,6 +3462,15 @@ static void _tag_read_you(reader &th)
             you.mutation[MUT_TELEPORT] = 2;
     }
 
+    if (th.getMinorVersion() < TAG_MINOR_RECOMPRESS_BADMUTS)
+    {
+        if (you.mutation[MUT_HEAT_VULNERABILITY] > 1)
+            you.mutation[MUT_HEAT_VULNERABILITY] = 1;
+
+        if (you.mutation[MUT_COLD_VULNERABILITY] > 1)
+            you.mutation[MUT_COLD_VULNERABILITY] = 1;
+    }
+
     // fully clean up any removed mutations
     for (auto m : get_removed_mutations())
         _clear_mutation(m);
