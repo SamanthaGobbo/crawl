@@ -1697,6 +1697,15 @@ Virulence spell
 
 Makes a targeted creature more vulnerable to poison.
 %%%%
+Vhi's Electric Charge spell
+
+Sends the caster hurtling at a chosen nearby enemy, launching a high-accuracy
+melee attack on arrival. Additional electric damage will be dealt based on the
+length of the charge, the power of the spell, and the physical damage of the
+attack. The caster is wrapped in an envelope of twisted space, allowing them
+to safely pass through creatures, traps, and harmful terrain, and to displace
+creatures at their destination.
+%%%%
 Volley of Thorns spell
 
 Launches a small hail of sharp thorns.

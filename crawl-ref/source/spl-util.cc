@@ -1447,14 +1447,23 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
         break;
 
     case SPELL_MANIFOLD_ASSAULT:
-    {
         if (temp)
         {
             const string unproj_reason = weapon_unprojectability_reason();
             if (unproj_reason != "")
                 return unproj_reason;
         }
-    }
+        break;
+
+    case SPELL_ELECTRIC_CHARGE:
+        if (temp)
+        {
+            const string no_move_reason = movement_impossible_reason();
+            if (!no_move_reason.empty())
+                return no_move_reason;
+            if (!electric_charge_possible(true))
+                return "you can't see anything to charge at.";
+        }
         break;
 
     default:
