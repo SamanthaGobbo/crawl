@@ -1374,11 +1374,6 @@ string spell_uselessness_reason(spell_type spell, bool temp, bool prevent,
             return "you're being held away from the wall.";
         break;
 
-    case SPELL_CORPSE_ROT:
-        if (have_passive(passive_t::goldify_corpses))
-            return "necromancy does not work on golden corpses.";
-        break;
-
     case SPELL_ANIMATE_DEAD:
     case SPELL_SIMULACRUM:
         if (have_passive(passive_t::goldify_corpses))
