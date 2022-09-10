@@ -2191,7 +2191,7 @@ static const mutation_def mut_data[] =
 
   {"You have a special connection with the divine. (Faith)", "", ""},
   {"You feel connected to something greater than you.", "", ""},
-  {"You feel an urge to join r/atheism.", "", ""},
+  {"You feel rebellious.", "", ""},
 },
 
 { MUT_REFLEXIVE_HEADBUTT, 0, 1, mutflag::good, true,
